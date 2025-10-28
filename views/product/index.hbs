@@ -1,0 +1,41 @@
+<h1>{{title}}</h1>
+<p>Welcome to {{title}} </p>
+<a href="/category">Category</a>
+
+{{#if productList}}
+<table class="product-table" style="border-collapse: collapse; width: 100%;">
+    <thead>
+        <tr style="border: 1px solid black;">
+            <th style="text-align:left; padding:8px;">Product Name</th>
+            <th style="text-align:left; padding:8px;">Price</th>
+            <th style="text-align:left; padding:8px;">Image</th>
+            <th style="text-align:left; padding:8px;">Category</th>
+            <th style="text-align:left; padding:8px;">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <div>
+            <form action="/product/search" method="post">
+                <input class="col m5" type="search" name="keyword" placeholder="Search products..." required>
+            </form>
+            <div class="row">
+                <a class="btn" href="/product/add">Add Product</a>
+                <a class="btn-green" href="/product/sort/asc">Name Ascending</a>
+                <a class="btn-lime" href="/product/sort/desc">Name Descending</a>
+            </div>
+        </div>
+        {{#each productList}}
+        <tr style="border: 1px solid #ddd;">
+            <td style="padding:8px; vertical-align: middle;">{{name}}</td>
+            <td style="padding:8px; vertical-align: middle;">{{price}}</td>
+            <td style="padding:8px; vertical-align: middle;"><img class="product-img" src="{{image}}" alt="{{name}}"></td>
+            <td style="padding:8px; vertical-align: middle;"> {{#if category}} {{category.name}} {{else}} (no category) {{/if}} </td>
+            <td style="padding:8px; vertical-align: middle;"><a href="/product/edit/{{_id}}">Edit</a></td>
+            <td style="padding:8px; vertical-align: middle;"><a href="/product/delete/{{_id}}">Delete</a></td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+{{else}}
+<p>No categories found.</p>
+{{/if}}
