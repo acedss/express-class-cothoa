@@ -10,9 +10,13 @@
 <body>
     <nav class="bg-red-100 text-purple-500 text-3xl mb-4">
     <a  href="/">Home</a> |
-    <a href="/user">Users</a>
     <a href="/product">Products</a>
     <a href="/category">Category</a>
+    {{#if username}}
+        | <a href="/auth/logout">Logout ({{username}})</a>
+    {{else}}
+        | <a href="/auth/login">Login</a>
+    {{/if}}
     </nav>
     {{{body}}}
 </body>

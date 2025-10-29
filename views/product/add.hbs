@@ -1,6 +1,6 @@
 <h1>{{title}}</h1>
 
-<form action="/product/add" method="POST" style="max-width: 400px;">
+<form action="/product/add" method="POST" enctype="multipart/form-data" style="max-width: 400px;">
     <label for="name">Product Name</label><br>
     <input type="text" id="name" name="name" value="{{product.name}}" required />
     {{#if InputErrors.name}}
@@ -11,14 +11,15 @@
     <label for="price">Price</label><br>
     <input type="number" id="price" name="price" value="{{product.price}}" required /><br><br>
 
-    <label for="image">Image URL</label><br>
-    <input type="text" id="image" name="image" value="{{product.image}}" /><br><br>
-
+    <label for="image">Image file</label><br>
+    <input type="file" name="image" id="" required>
+    {{!-- <input type="text" id="image" name="image" value="{{product.image}}" /><br><br> --}}
+    <br>
     <label for="category">Category</label><br>
     <select id="category" name="category" required>
         <option value="">-- Select Category --</option>
         {{#each categories}}
-        <option value="{{_id}}">{{name}}</option>
+            <option value="{{_id}}">{{name}}</option>
         {{/each}}
     </select><br><br>
 

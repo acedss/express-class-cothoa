@@ -1,6 +1,7 @@
+var process = require("process");
 var mongoose = require("mongoose");
 
-const db_url = process.env.DB_URL;
+const db_url = "mongodb+srv://cothoa:123@cothoaa.ze3r8sz.mongodb.net/web?retryWrites=true&w=majority&appName=cothoaa";
 
 exports.connectDB = async () => {
     try {

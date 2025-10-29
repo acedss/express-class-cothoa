@@ -1,0 +1,35 @@
+<div class="auth-container">
+    <h1>Register</h1>
+
+    {{#if errors}}
+        <ul class="errors">
+            {{#each errors}}
+                <li>{{this.msg}}</li>
+            {{/each}}
+        </ul>
+    {{/if}}
+
+    <form action="/auth/register" method="post" novalidate>
+        {{#if csrfToken}}
+            <input type="hidden" name="_csrf" value="{{csrfToken}}">
+        {{/if}}
+
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input id="username" name="username" type="text" value="{{username}}" required autocomplete="username" />
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" required autocomplete="new-password" />
+        </div>
+
+        <div class="form-group">
+            <label for="password2">Confirm Password</label>
+            <input id="password2" name="password2" type="password" required autocomplete="new-password" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Register</button>
+    </form>
+
+    <p>Already have an account? <a href="/auth/login">Login</a></p>
+</div>

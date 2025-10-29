@@ -1,14 +1,66 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
-<div >
-    <tr>
-        <th>Category Name</th>
-        <th>Category Description</th>
-    </tr>
-    {{#each categoryList}}
-    <tr>
-        <td>{{this.name}}</td>
-        <td>{{this.description}}</td>
-    </tr>
-    {{/each}}
+<style>
+    .container {
+        max-width: 900px;
+        margin: 40px auto;
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+        color: #333;
+    }
+    .header { text-align: center; margin-bottom: 18px; }
+    .title { font-size: 2rem; margin: 0; }
+    .lead { color: #666; margin-top: 6px; }
+    .card {
+        background: #fff;
+        border-radius: 8px;
+        padding: 16px;
+        box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+    }
+    table.clean {
+        width: 100%;
+        border-collapse: collapse;
+        overflow: hidden;
+        border-radius: 6px;
+    }
+    table.clean thead th {
+        text-align: left;
+        padding: 12px 14px;
+        font-weight: 600;
+        background: linear-gradient(90deg, #f8fafc, #f1f5f9);
+        border-bottom: 1px solid #e6e9ef;
+    }
+    table.clean tbody td {
+        padding: 12px 14px;
+        border-bottom: 1px solid #f1f3f6;
+    }
+    table.clean tbody tr:nth-child(even) { background: #fbfcfd; }
+    .empty-row { text-align: center; color: #777; padding: 16px; }
+</style>
+
+<div class="container">
+    <header class="header">
+        <h1 class="title">{{title}}</h1>
+        <p class="lead">Welcome to {{title}}</p>
+    </header>
+
+    <div class="card">
+        <table class="clean" role="table" aria-label="Category list">
+            <thead>
+                <tr>
+                    <th>Category Name</th>
+                    <th>Category Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each categoryList}}
+                <tr>
+                    <td>{{this.name}}</td>
+                    <td>{{this.description}}</td>
+                </tr>
+                {{else}}
+                <tr>
+                    <td colspan="2" class="empty-row">No categories available.</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
 </div>
